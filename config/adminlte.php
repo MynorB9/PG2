@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Info</b>DP',
+    'logo' => '<b>Vidrieria San Jose</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -242,8 +242,29 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Artículos',
+            'text'        => 'Mediciones',
+            'url'         => 'mediciones',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 'CRUD',
+            'label_color' => 'warning',
+        ],
+        [
+            'text'        => 'Lista de Trabajos',
             'url'         => 'articulos',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 'ESTADO',
+            'label_color' => 'warning',
+        ],
+        [
+            'text'        => 'CANCELADOS',
+            'url'         => 'cancelado',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 'LISTA',
+            'label_color' => 'warning',
+        ],
+        [
+            'text'        => 'EMPLEADOS',
+            'url'         => 'empleados',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'CRUD',
             'label_color' => 'warning',

@@ -1,18 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'CRUD con Laravel 8')
+@section('title', 'CRUD Articulos')
 
 @section('content_header')
     <h1>Editar Artículo</h1>
 @stop
 
 @section('content')
-   <form action="/articulos/{{$articulo->id}}" method="POST">    
+   <form action="/articulos/{{$articulo->id}}" method="POST">
    @csrf
    @method('PUT')
   <div class="mb-3">
     <label for="" class="form-label">Código</label>
-    <input id="codigo" name="codigo" type="text" class="form-control" value="{{$articulo->codigo}}">    
+    <input id="codigo" name="codigo" type="text" class="form-control" value="{{$articulo->codigo}}">
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Descripción</label>
@@ -35,5 +35,5 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
-@section('js')  
+@section('js')
 @stop

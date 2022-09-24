@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicion;
 use Illuminate\Http\Request;
 use App\Models\Articulo;
 
@@ -13,12 +14,23 @@ class ArticuloController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $articulos = Articulo::all();
-        return view('articulo.index')->with('articulos',$articulos);
+        #$articulos = Medicion::where('estado', '=', 'Cotizado')->get();
+        $articulos = Medicion::whereNotIn('estado',  ['Pendiente','Medido','Cancelado']  )->get();
+        $confirmados = Medicion::where('estado', '=', 'Confirmado')->get();
+        $pendientesInstalacion = Medicion::where('estado', '=', 'Pendiente Instalacion')->get();
+        $pendientesPago = Medicion::where('estado', '=', 'Instalado Pendiente Pago')->get();
+        $cancelados = Medicion::where('estado', '=', 'Cancelado')->get();
+
+        return view('articulo.index', compact('articulos','confirmados','pendientesInstalacion','pendientesPago','cancelados'));
+    }
+
+    public function indexCancelado(){
+        $cancelados = Medicion::where('estado', '=', 'Cancelado')->get();
+        return view('cancelado.index', compact('cancelados'));
     }
 
     /**
@@ -38,7 +50,7 @@ class ArticuloController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {
         $articulos = new Articulo();
 
         $articulos->codigo = $request->get('codigo');

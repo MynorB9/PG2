@@ -1,48 +1,41 @@
 @extends('adminlte::page')
 
-@section('title', 'CRUD Mediciones')
+@section('title', 'CRUD empleado')
 
 @section('content_header')
-    <h1>Editar Medicion</h1>
+    <h1>Editar empleado</h1>
 @stop
 
 @section('content')
-   <form action="/mediciones/{{$medicion->id}}" method="POST">
+   <form action="/empleados/{{$empleado->id}}" method="POST">
    @csrf
    @method('PUT')
   <div class="mb-3">
     <label for="" class="form-label">Nombre</label>
-    <input id="nombre" name="nombre" type="text" class="form-control" value="{{$medicion->nombre}}">
+    <input id="nombre" name="nombre" type="text" class="form-control" value="{{$empleado->nombre}}">
   </div>
        <div class="mb-3">
            <label for="" class="form-label">Telefono</label>
-           <input id="telefono" name="telefono" type="text" class="form-control" value="{{$medicion->telefono}}">
+           <input id="telefono" name="telefono" type="text" class="form-control" value="{{$empleado->telefono}}">
        </div>
        <div class="mb-3">
            <label for="" class="form-label">Direccion</label>
-           <input id="direccion" name="direccion" type="text" class="form-control" value="{{$medicion->direccion}}">
+           <input id="direccion" name="direccion" type="text" class="form-control" value="{{$empleado->direccion}}">
        </div>
        <div class="mb-3">
-           <label for="" class="form-label">Descripcion</label>
-           <input id="descripcion" name="descripcion" type="text" class="form-control" value="{{$medicion->descripcion}}">
+           <label for="" class="form-label">Puesto</label>
+           <input id="puesto" name="puesto" type="text" class="form-control" value="{{$empleado->puesto}}">
        </div>
        <div class="mb-3">
-           <label for="estado">Estado</label>
-           <select name="estado" id="estado" class="form-control">
-               <option value="Pendiente">Pendiente</option>
-               <option value="Medido">Medido</option>
-               <option value="Cotizado">Cotizado</option>
-           </select>
+           <label for="" class="form-label">Sueldo</label>
+           <input id="sueldo" name="sueldo" type="text" class="form-control" value="{{$empleado->sueldo}}">
        </div>
        <div class="mb-3">
-           <label for="" class="form-label">Detalle Trabajo</label>
-           <textarea id="detalleTrabajo" name="detalleTrabajo" class="form-control" > {{$medicion->detalleTrabajo}} </textarea>
+           <label for="" class="form-label">Imagen</label>
+           <input id="imagen" name="imagen" type="file" class="form-control" >
        </div>
-       <div class="mb-3">
-           <label for="precio" class="form-label">Precio</label>
-           <input id="precio" name="precio" type="number" class="form-control" value="{{$medicion->precio}}">
-       </div>
-  <a href="/mediciones" class="btn btn-secondary">Cancelar</a>
+
+  <a href="/empleados" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @stop

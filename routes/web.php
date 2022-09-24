@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\medicionesController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\MedicionesImagenesController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +21,18 @@ Route::get('/', function () {
 });
 
 Route::resource('articulos','App\Http\Controllers\ArticuloController');
+Route::resource('mediciones','App\Http\Controllers\MedicionesController');
+Route::resource('empleados','App\Http\Controllers\EmpleadoController');
+Route::get('/empleado', [EmpleadoController::class, 'index'])->name('empleados.index');
 
+Route::get('/cancelado', [ArticuloController::class, 'indexCancelado'])->name('cancelados.index');
+
+Route::get('/medicion/confirmar/{id}/{estado}', [medicionesController::class, 'cambiarEstatus'])->name('medicion.cambiarEstatus');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::post('/mediciones/store/{id_medicion}', [MedicionesImagenesController::class, 'store'])->name('imagen.store');
+
+Route::get('/mediciones/imagenes/{id_medicion}', [MedicionesImagenesController::class, 'view'])->name('imagen.view');

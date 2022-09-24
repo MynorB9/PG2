@@ -1,54 +1,52 @@
 @extends('adminlte::page')
 
-@section('title', 'CRUD Mediciones')
+@section('title', 'CRUD empleados')
 
 @section('content_header')
-    <h1>Listado de Mediciones</h1>
+    <h1>Listado de empleados</h1>
 @stop
 
 @section('content')
-   <a href="mediciones/create" class="btn btn-primary mb-3">CREAR</a>
+   <a href="empleados/create" class="btn btn-primary mb-3">CREAR</a>
 
-<table id="mediciones" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<table id="empleados" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
-            <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Telefono</th>
             <th scope="col">Direccion</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">DetalleTrabajo</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Estado</th>
+            <th scope="col">Puesto</th>
+            <th scope="col">Sueldo</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Saldo</th>
+
             <th scope="col">Acciones</th>
+
         </tr>
     </thead>
     <tbody>
-        @foreach ($mediciones as $medicion)
+        @foreach ($empleados as $empleado)
         <tr>
-            <td>{{ $medicion->id}}</td>
-            <td>{{$medicion->nombre}}</td>
-            <td>{{$medicion->telefono}}</td>
-            <td>{{$medicion->direccion}}</td>
-            <td>{{$medicion->descripcion}}</td>
-            <td>{{$medicion->detalleTrabajo}}</td>
-            <td>{{$medicion->precio}}</td>
+            <td>{{$empleado->nombre}}</td>
+            <td>{{$empleado->telefono}}</td>
+            <td>{{$empleado->direccion}}</td>
+            <td>{{$empleado->puesto}}</td>
+            <td>{{$empleado->sueldo}}</td>
+            <td><img width="50" class="img-fluid" src="data:image/jpeg;base64,{{($empleado->imagen)}}" alt="{{$empleado->nombre}}"></td>
+            <td>{{$empleado->saldo}}</td>
+
             <td>
-                @if($medicion->estado == 'Pendiente')
-                    <span class="badge badge-primary">{{$medicion->estado}}</span>
-                @elseif($medicion->estado == 'Medido')
-                    <span class="badge badge-secondary">{{$medicion->estado}}</span>
-                @else
-                    <span class="badge badge-danger">{{$medicion->estado}}</span>
-                @endif
-            </td>
-            <td>
-                <form action="{{ route ('mediciones.destroy',$medicion->id)}}" method="POST">
-                <a href="/mediciones/{{ $medicion->id}}/edit" class="btn btn-info">Editar</a>
-                @csrf
+
+                <form action="{{ route ('empleados.destroy',$empleado->id)}}" method="POST">
+                <a href="/empleados/{{ $empleado->id}}/edit" class="btn btn-info">Editar</a>
+
+                    @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Borrar</button>
+
                 </form>
+                <button type="submit" class="btn btn-info">Adelanto</button>
+
             </td>
         </tr>
         @endforeach
@@ -68,8 +66,8 @@
 
 <script>
 $(document).ready(function() {
-    $('#mediciones').DataTable({
-        "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
+    $('#empleados').DataTable({
+        "lengthMenu": [[20, 50, -1], [20, 50, "All"]]
     });
 } );
 </script>
