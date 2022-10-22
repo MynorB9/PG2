@@ -26,29 +26,29 @@
 
             <tr>
                 <td><a class="btn btn-primary" href="{{route('imagen.view', $medicion->id)}}"><i class="far fa-images"></i></a></td>
-                <td>{{$medicion->nombre}}</td>
+                <td>{{strtoupper($medicion->nombre)}}</td>
                 <td>{{$medicion->telefono}}</td>
                 <td>{{$medicion->direccion}}</td>
                 <td>{{$medicion->detalleTrabajo}}</td>
                 <td>{{$medicion->precio}}</td>
                 <td>
                     @if($medicion->estado == 'Cotizado')
-                        <span class="badge badge-primary">{{$medicion->estado}}</span>
+                        <span class="badge badge-primary w-100">{{$medicion->estado}}</span>
                     @elseif($medicion->estado == 'Confirmado')
-                        <span class="badge badge-secondary">{{$medicion->estado}}</span>
+                        <span class="badge badge-secondary  w-100">{{$medicion->estado}}</span>
                     @elseif($medicion->estado == 'Instalado Pendiente Pago')
-                        <span class="badge badge-info">{{$medicion->estado}}</span>
+                        <span class="badge badge-info  w-100">{{$medicion->estado}}</span>
                     @elseif($medicion->estado == 'Cancelado')
-                        <span class="badge badge-danger">{{$medicion->estado}}</span>
+                        <span class="badge badge-danger  w-100">{{$medicion->estado}}</span>
                     @endif
                 </td>
                 <td nowrap>
                     @if($medicion->estado == 'Cotizado')
-                        <button type="button" onclick="confirmarMedicion({{ $medicion->id}}, 'Confirmado')" class="btn btn-info btn-sm">Confirmar</button>
+                        <button type="button" onclick="confirmarMedicion({{ $medicion->id}}, 'Confirmado')" class="btn btn-info btn-sm btn-block">Confirmar</button>
                     @elseif($medicion->estado == 'Confirmado')
-                        <button type="button" onclick="confirmarMedicion({{ $medicion->id}}, 'Instalado Pendiente Pago')" class="btn btn-primary btn-sm">Pendiente Pago</button>
+                        <button type="button" onclick="confirmarMedicion({{ $medicion->id}}, 'Instalado Pendiente Pago')" class="btn btn-primary btn-sm btn-block">Pendiente Pago</button>
                     @elseif($medicion->estado == 'Instalado Pendiente Pago')
-                        <button type="button" onclick="confirmarMedicion({{ $medicion->id}}, 'Cancelado')" class="btn btn-danger btn-sm">Cancelado</button>
+                        <button type="button" onclick="confirmarMedicion({{ $medicion->id}}, 'Cancelado')" class="btn btn-danger btn-sm btn-block">Realizar Pago</button>
                     @endif
                 </td>
             </tr>
@@ -72,27 +72,40 @@
 
 <script>
     function confirmarMedicion(id, estado){
-        let confirmarAlert = confirm('Desea cambiar el estado de la medicion ID: ' + id + ' a estado: ' + estado);
-        if(confirmarAlert){
-            window.location.href = "/medicion/confirmar/" +id + "/" +estado;
-        }
+        Swal.fire({
+            title: 'Desea cambiar el estado de la medicion ID: ' + id + ' a estado: ' + estado,
+            showDenyButton: true,
+            confirmButtonText: 'Aceptar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                window.location.href = "/medicion/confirmar/" +id + "/" +estado;
+            } else if (result.isDenied) {
+
+            }
+        })
     }
 </script>
 
 <script>
 $(document).ready(function() {
     $('#articulos').DataTable({
-        "lengthMenu": [[10, 50, -1], [10, 50, "All"]]
-    });
-    $('#confirmados').DataTable({
-        "lengthMenu": [[10, 50, -1], [10, 50, "All"]]
-    });
 
-    $('#pendientePago').DataTable({
-        "lengthMenu": [[10, 50, -1], [10, 50, "All"]]
-    });
-    $('#cancelados').DataTable({
-        "lengthMenu": [[10, 50, -1], [10, 50, "All"]]
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ por pagina",
+            "zeroRecords": "Nada encontrado",
+            "info": "Mostrar _PAGE_ paginas de _PAGES_",
+            "infoEmpty": "No hay nada",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Buscar",
+            "paginate":{
+                "first": "Primera",
+                "last": "Ultima",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
     });
 } );
 </script>

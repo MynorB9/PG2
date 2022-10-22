@@ -26,6 +26,7 @@
     @if(!config('adminlte.enabled_laravel_mix'))
         <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         {{-- Configured Stylesheets --}}
         @include('adminlte::plugins', ['type' => 'css'])
@@ -38,7 +39,33 @@
     @else
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Poppins', sans-serif !important;
 
+        }
+        .nav-link{
+            color: #FFFFFF !important;
+        }
+        .brand-text{
+            color: #FFFFFF !important;
+        }
+        .btn-primary{
+            background-color: #172d42 !important;
+        }
+        .sidebar-dark-primary{
+            background-color: #172d42;
+        }
+        .bg-primary{
+            background-color: #172d42 !important;
+        }
+        .content-wrapper{
+            background-color: #FFFFFF !important;
+        }
+    </style>
     {{-- Livewire Styles --}}
     @if(config('adminlte.livewire'))
         @if(app()->version() >= 7)

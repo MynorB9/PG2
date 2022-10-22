@@ -27,14 +27,14 @@
 
         <tr>
             <td>{{ $medicion->id}}</td>
-            <td>{{$medicion->nombre}}</td>
+            <td>{{strtoupper($medicion->nombre)}}</td>
             <td>{{$medicion->telefono}}</td>
-            <td>{{$medicion->direccion}}</td>
+            <td>{{strtoupper($medicion->direccion)}}</td>
             <td>{{$medicion->descripcion}}</td>
             <td>{{$medicion->detalleTrabajo}}</td>
             <td>{{$medicion->precio}}</td>
             <td>
-                <span class="badge badge-danger" style="background-color: #1e0db4">{{$medicion->estado}}</span>
+                <span class="badge badge-danger w-100" style="background-color: #1e0db4">{{$medicion->estado}}</span>
             </td>
         </tr>
     @endforeach
@@ -58,11 +58,19 @@
 <script>
     $(document).ready(function() {
         $('#cancelados').DataTable({
-            "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "Todos"]],
-            "oLanguage": {
-
-                "sSearch": "Buscar:"
-
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ por pagina",
+                "zeroRecords": "Nada encontrado",
+                "info": "Mostrar _PAGE_ paginas de _PAGES_",
+                "infoEmpty": "No hay nada",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "search": "Buscar",
+                "paginate":{
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
             }
         });
     } );

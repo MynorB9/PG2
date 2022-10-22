@@ -67,7 +67,20 @@
 <script>
 $(document).ready(function() {
     $('#empleados').DataTable({
-        "lengthMenu": [[20, 50, -1], [20, 50, "All"]]
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ por pagina",
+            "zeroRecords": "Nada encontrado",
+            "info": "Mostrar _PAGE_ paginas de _PAGES_",
+            "infoEmpty": "No hay nada",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Buscar",
+            "paginate":{
+                "first": "Primera",
+                "last": "Ultima",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
     });
 } );
 </script>

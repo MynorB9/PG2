@@ -27,19 +27,19 @@
         @foreach ($mediciones as $medicion)
         <tr>
             <td><a class="btn btn-primary" href="{{route('imagen.view', $medicion->id)}}"><i class="far fa-images"></i></a></td>
-            <td>{{$medicion->nombre}}</td>
+            <td>{{strtoupper($medicion->nombre)}}</td>
             <td>{{$medicion->telefono}}</td>
-            <td>{{$medicion->direccion}}</td>
-            <td>{{$medicion->descripcion}}</td>
-            <td>{{$medicion->detalleTrabajo}}</td>
+            <td>{{strtoupper($medicion->direccion)}}</td>
+            <td>{{strtoupper($medicion->descripcion)}}</td>
+            <td>{{strtoupper($medicion->detalleTrabajo)}}</td>
             <td>{{$medicion->precio}}</td>
             <td>
                 @if($medicion->estado == 'Pendiente')
-                    <span class="badge badge-primary">{{$medicion->estado}}</span>
+                    <span class="badge badge-primary w-100">{{$medicion->estado}}</span>
                 @elseif($medicion->estado == 'Medido')
-                    <span class="badge badge-secondary">{{$medicion->estado}}</span>
+                    <span class="badge badge-secondary w-100">{{$medicion->estado}}</span>
                 @else
-                    <span class="badge badge-danger">{{$medicion->estado}}</span>
+                    <span class="badge badge-danger w-100">{{$medicion->estado}}</span>
                 @endif
             </td>
             <td>
@@ -69,7 +69,20 @@
 <script>
 $(document).ready(function() {
     $('#mediciones').DataTable({
-        "lengthMenu": [[10, 50, -1], [10, 50, "All"]]
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ por pagina",
+            "zeroRecords": "Nada encontrado",
+            "info": "Mostrar _PAGE_ paginas de _PAGES_",
+            "infoEmpty": "No hay nada",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Buscar",
+            "paginate":{
+                "first": "Primera",
+                "last": "Ultima",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+        }
     });
 } );
 </script>
