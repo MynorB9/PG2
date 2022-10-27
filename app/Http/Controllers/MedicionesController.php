@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetalleMediciones;
 use Illuminate\Http\Request;
 use App\Models\Medicion;
 
@@ -71,9 +72,9 @@ class medicionesController extends Controller
      */
     public function edit($id)
     {
-        $Medicion = Medicion::find($id);
-
-        return view('medicion.edit')->with('medicion',$Medicion);
+        $medicion = Medicion::find($id);
+        $detalle = DetalleMediciones::where('id_medicion', $id)->get();
+        return view('medicion.edit', compact('medicion','detalle'));
     }
 
     /**
@@ -96,6 +97,19 @@ class medicionesController extends Controller
         $Medicion->precio = $request->precio;
 
         $Medicion->save();
+
+        $detalleAntiguo = DetalleMediciones::where('id_medicion', $id)->delete();
+
+        foreach($request->detalles as $d){
+            if($d != '' || $d != null) {
+                $detalle = new DetalleMediciones();
+                $detalle->descripcion = $d;
+                $detalle->cantidad = 1;
+                $detalle->id_medicion = $id;
+                $detalle->save();
+            }
+        }
+
 
         return redirect('/mediciones');
     }

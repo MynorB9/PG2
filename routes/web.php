@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\medicionesController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\MedicionesImagenesController;
@@ -16,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::resource('mediciones','App\Http\Controllers\MedicionesController');
 
 Route::resource('articulos','App\Http\Controllers\ArticuloController');
-Route::resource('mediciones','App\Http\Controllers\MedicionesController');
 Route::resource('empleados','App\Http\Controllers\EmpleadoController');
 Route::get('/empleado', [EmpleadoController::class, 'index'])->name('empleados.index');
 
