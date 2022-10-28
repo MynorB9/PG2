@@ -26,7 +26,10 @@ Route::resource('articulos','App\Http\Controllers\ArticuloController');
 Route::resource('empleados','App\Http\Controllers\EmpleadoController');
 Route::get('/empleado', [EmpleadoController::class, 'index'])->name('empleados.index');
 
+
 Route::get('/cancelado', [ArticuloController::class, 'indexCancelado'])->name('cancelados.index');
+Route::get('/confirmado', [ArticuloController::class, 'indexConfirmado'])->name('confirmados.index');
+
 
 Route::get('/medicion/confirmar/{id}/{estado}', [medicionesController::class, 'cambiarEstatus'])->name('medicion.cambiarEstatus');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -33,6 +33,11 @@ class ArticuloController extends Controller
         return view('cancelado.index', compact('cancelados'));
     }
 
+    public function indexConfirmado(){
+        $confirmados = Medicion::where('estado', '=', 'Confirmado')->get();
+        return view('confirmado.index', compact('confirmados'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -63,6 +68,7 @@ class ArticuloController extends Controller
         return redirect('/articulos');
 
     }
+
 
     /**
      * Display the specified resource.

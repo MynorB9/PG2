@@ -14,23 +14,22 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="" class="form-label">Nombre</label>
-                <input id="nombre" name="nombre" type="text" class="form-control" value="{{$medicion->nombre}}">
+                <input id="nombre" name="nombre" type="text" class="form-control" value="{{$medicion->nombre}}" disabled>
 
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="" class="form-label">Telefono</label>
-                <input id="telefono" name="telefono" type="text" class="form-control" value="{{$medicion->telefono}}">
+                <input id="telefono" name="telefono" type="text" class="form-control" value="{{$medicion->telefono}}" disabled>
             </div>
-            <div class="col-md-6 "mb-3">
+            <div class="col-md-6 mb-3">
                 <label for="" class="form-label">Direccion</label>
-                <input id="direccion" name="direccion" type="text" class="form-control"
-                       value="{{$medicion->direccion}}">
+                <input id="direccion" name="direccion" type="text" class="form-control" value="{{$medicion->direccion}}"disabled>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="" class="form-label">Descripcion</label>
                 <input id="descripcion" name="descripcion" type="text" class="form-control"
-                       value="{{$medicion->descripcion}}">
+                       value="{{$medicion->descripcion}}" disabled>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="estado">Estado</label>

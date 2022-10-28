@@ -20,6 +20,12 @@ class MedicionesImagenesController extends Controller
 
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function view($id_medicion){
         $imagenes = MedicionesImagenes::where('id_medicion', $id_medicion)->get();
 

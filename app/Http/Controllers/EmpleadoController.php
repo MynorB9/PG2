@@ -12,7 +12,8 @@ class EmpleadoController extends Controller
     public function index()
     {
         $empleados = Empleados::all();
-        return view('Empleado.index')->with('empleados',$empleados);    }
+        return view('Empleado.index')->with('empleados',$empleados);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -61,6 +62,11 @@ class EmpleadoController extends Controller
     {
         //
     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     public function edit($id)
     {

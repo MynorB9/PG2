@@ -17,9 +17,9 @@
             <th scope="col">Telefono</th>
             <th scope="col">Direccion</th>
             <th scope="col">Descripcion</th>
-            <th scope="col">DetalleTrabajo</th>
-            <th scope="col">Precio</th>
+            <th scope="col">Medidor</th>
             <th scope="col">Estado</th>
+            <th scope="col">Fecha</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -31,8 +31,7 @@
             <td>{{$medicion->telefono}}</td>
             <td>{{strtoupper($medicion->direccion)}}</td>
             <td>{{strtoupper($medicion->descripcion)}}</td>
-            <td>{{strtoupper($medicion->detalleTrabajo)}}</td>
-            <td>{{$medicion->precio}}</td>
+            <td>{{strtoupper($medicion->id_user)}}</td>
             <td>
                 @if($medicion->estado == 'Pendiente')
                     <span class="badge badge-primary w-100">{{$medicion->estado}}</span>
@@ -42,9 +41,11 @@
                     <span class="badge badge-danger w-100">{{$medicion->estado}}</span>
                 @endif
             </td>
+            <td>{{strtoupper($medicion->fecha)}}</td>
+
             <td>
                 <form action="{{ route ('mediciones.destroy',$medicion->id)}}" method="POST">
-                <a href="/mediciones/{{ $medicion->id}}/edit" class="btn btn-info">Editar</a>
+                <a href="/mediciones/{{ $medicion->id}}/edit" class="btn btn-info">Completar</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Borrar</button>

@@ -15,7 +15,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Telefono</th>
             <th scope="col">Direccion</th>
-            <th scope="col">Detalle Trabajo</th>
+            <th scope="col">Detalle</th>
             <th scope="col">Precio</th>
             <th scope="col">Estado</th>
             <th scope="col">Acciones</th>
@@ -29,7 +29,7 @@
                 <td>{{strtoupper($medicion->nombre)}}</td>
                 <td>{{$medicion->telefono}}</td>
                 <td>{{$medicion->direccion}}</td>
-                <td>{{$medicion->detalleTrabajo}}</td>
+                <td></td>
                 <td>{{$medicion->precio}}</td>
                 <td>
                     @if($medicion->estado == 'Cotizado')

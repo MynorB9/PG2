@@ -74,7 +74,7 @@
                 <p>Trabajos Terminados</p>
             </div>
             <div class="icon">
-                <i class="fas fa-user-plus"></i>
+                <i class="fas fa-check-double"></i>
             </div>
         </div>
     </div>

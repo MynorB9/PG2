@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DetalleMediciones;
 use Illuminate\Http\Request;
 use App\Models\Medicion;
+use Illuminate\Support\Facades\Auth;
 
 class medicionesController extends Controller
 {
@@ -46,12 +47,14 @@ class medicionesController extends Controller
         $mediciones->telefono = $request->get('telefono');
         $mediciones->direccion = $request->get('direccion');
         $mediciones->descripcion = $request->get('descripcion');
+        $mediciones->fecha = now();
 
         $mediciones->save();
 
         return redirect('/mediciones');
 
     }
+
 
     /**
      * Display the specified resource.
@@ -87,11 +90,7 @@ class medicionesController extends Controller
     public function update(Request $request, $id)
     {
         $Medicion = medicion::find($id);
-
-        $Medicion->nombre = $request->get('nombre');
-        $Medicion->telefono = $request->get('telefono');
-        $Medicion->direccion = $request->get('direccion');
-        $Medicion->descripcion = $request->get('descripcion');
+        $Medicion->id_user = Auth::user()->name;
         $Medicion->estado = $request->get('estado');
         $Medicion->detalleTrabajo = $request->detalleTrabajo;
         $Medicion->precio = $request->precio;
@@ -135,4 +134,7 @@ class medicionesController extends Controller
 
         return redirect('/articulos');
     }
+
+
+
 }

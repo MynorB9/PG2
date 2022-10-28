@@ -245,23 +245,33 @@ return [
         [
             'text'        => 'Mediciones',
             'url'         => 'mediciones',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-pencil-ruler',
             'label'       => 'CRUD',
             'label_color' => 'warning',
             'rol' => [ 'admin', 'supervisor','medidor']
+
         ],
         [
-            'text'        => 'Lista de Trabajos',
+            'text'        => 'TRABAJOS',
             'url'         => 'articulos',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-toolbox',
             'label'       => 'ESTADO',
             'label_color' => 'warning',
             'rol' => [ 'admin', 'supervisor',]
         ],
         [
+            'text'        => 'EN CURSO',
+            'url'         => 'confirmado',
+            'icon'        => 'fas fa-hourglass-half',
+            'label'       => 'LISTA',
+            'label_color' => 'warning',
+            'rol' => [ 'admin', 'supervisor']
+
+        ],
+        [
             'text'        => 'CANCELADOS',
             'url'         => 'cancelado',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-hand-holding-usd',
             'label'       => 'LISTA',
             'label_color' => 'warning',
             'rol' => [ 'admin', 'supervisor']
@@ -269,7 +279,7 @@ return [
         [
             'text'        => 'EMPLEADOS',
             'url'         => 'empleados',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-users',
             'label'       => 'CRUD',
             'label_color' => 'warning',
             'rol' => [ 'admin']
@@ -279,17 +289,11 @@ return [
         [
             'text' => 'Perfil de Usuario',
             'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-user-cog',
             'rol' => [ 'admin', 'supervisor','medidor']
 
         ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-            'rol' => [ 'admin', 'supervisor','medidor']
 
-        ],
 
     ],
 
