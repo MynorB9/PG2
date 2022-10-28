@@ -283,7 +283,14 @@ return [
             'label'       => 'CRUD',
             'label_color' => 'warning',
             'rol' => [ 'admin']
-
+        ],
+        [
+            'text'        => 'USUARIOS',
+            'url'         => 'users',
+            'icon'        => 'fas fa-users',
+            'label'       => 'CRUD',
+            'label_color' => 'warning',
+            'rol' => [ 'admin']
         ],
         ['header' => 'Configuración de la cuenta'],
         [
