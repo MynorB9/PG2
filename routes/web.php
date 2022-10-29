@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\medicionesController;
+use App\Http\Controllers\MedicionesController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\MedicionesImagenesController;
 use App\Http\Controllers\UsersController;
