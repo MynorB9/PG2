@@ -12,7 +12,7 @@
 <table id="cancelados" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
     <tr>
-        <th scope="col">ID</th>
+        <th scope="col">FECHA</th>
         <th scope="col">Nombre</th>
         <th scope="col">Telefono</th>
         <th scope="col">Direccion</th>
@@ -26,7 +26,7 @@
     @foreach ($cancelados as $medicion)
 
         <tr>
-            <td>{{ $medicion->id}}</td>
+            <td>{{$medicion->fecha}}</td>
             <td>{{strtoupper($medicion->nombre)}}</td>
             <td>{{$medicion->telefono}}</td>
             <td>{{strtoupper($medicion->direccion)}}</td>
