@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Medicion;
 use Illuminate\Support\Facades\Auth;
 
-class medicionesController extends Controller
+class MedicionesController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -20,7 +20,7 @@ class medicionesController extends Controller
     public function index()
     {
         $mediciones = Medicion::whereIn('estado', ['Pendiente','Medido'] )->get();
-        return view('Medicion.index')->with('mediciones',$mediciones);
+        return view('medicion.index')->with('mediciones',$mediciones);
     }
 
     /**
@@ -30,7 +30,7 @@ class medicionesController extends Controller
      */
     public function create()
     {
-        return view('Medicion.create');
+        return view('medicion.create');
     }
 
     /**
