@@ -12,7 +12,7 @@ class EmpleadoController extends Controller
     public function index()
     {
         $empleados = Empleados::all();
-        return view('Empleado.index')->with('empleados',$empleados);
+        return view('empleado.index')->with('empleados',$empleados);
     }
 
     /**
@@ -22,7 +22,7 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        return view('Empleado.create');
+        return view('empleado.create');
     }
 
     /**
