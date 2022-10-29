@@ -29,7 +29,7 @@
                 <td>{{strtoupper($medicion->nombre)}}</td>
                 <td>{{$medicion->telefono}}</td>
                 <td>{{$medicion->direccion}}</td>
-                <td></td>
+                <td>{{$medicion->descripcion}}</td>
                 <td>{{$medicion->precio}}</td>
                 <td>
                     @if($medicion->estado == 'Cotizado')

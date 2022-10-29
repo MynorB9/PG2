@@ -39,7 +39,7 @@ Route::get('/cancelado', [ArticuloController::class, 'indexCancelado'])->name('c
 Route::get('/confirmado', [ArticuloController::class, 'indexConfirmado'])->name('confirmados.index');
 
 
-Route::get('/medicion/confirmar/{id}/{estado}', [medicionesController::class, 'cambiarEstatus'])->name('medicion.cambiarEstatus');
+Route::get('/medicion/confirmar/{id}/{estado}', [MedicionesController::class, 'cambiarEstatus'])->name('medicion.cambiarEstatus');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
